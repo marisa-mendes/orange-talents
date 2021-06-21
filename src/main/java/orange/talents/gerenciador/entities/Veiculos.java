@@ -1,7 +1,6 @@
-package orange.talents.usuariosapi.entidades;
+package orange.talents.gerenciador.entities;
 
 
-import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -9,7 +8,6 @@ import javax.persistence.Entity;
 
 @Entity
 @Data
-@Builder
 public class Veiculos {
 
     @Column(nullable = false)
