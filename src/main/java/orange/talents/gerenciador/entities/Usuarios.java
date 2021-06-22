@@ -2,49 +2,68 @@ package orange.talents.gerenciador.entities;
 
 import javax.persistence.*;
 
-import java.io.Serializable;
+
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
 
-@Entity
-@Table(name = "usuario")
-public class Usuarios implements Serializable {
-
-    private static final long serialVersionUID = 9125277018717732648L;
+public class Usuarios  {
 
     private Long id;
-
     private String cpf;
-
     private String email;
-
     private String nome;
-
     private LocalDate datanascimento;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-    private List<Veiculos> veiculos = new ArrayList<>();
-
-    public Usuarios(){
-
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Usuarios)) return false;
+        Usuarios usuarios = (Usuarios) o;
+        return id.equals(usuarios.id) && cpf.equals(usuarios.cpf) && email.equals(usuarios.email) && Objects.equals(nome, usuarios.nome) && Objects.equals(datanascimento, usuarios.datanascimento);
     }
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, cpf, email, nome, datanascimento);
+    }
+
     public Long getId() {
-        return id; }
+        return id;
+    }
 
-    @Column(name = "cpf", nullable = false, unique = true)
-    public  String getCpf(){return cpf;}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    @Column(name = "email", nullable = false, unique = true)
-    public String getEmail(){return email;}
+    public String getCpf() {
+        return cpf;
+    }
 
-    @Column(name = "nome", nullable = false)
-    public String getNome(){return nome;}
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
 
-    @Column(name = "datanascimento", nullable = false)
-    public LocalDate getDataNascimento(){return datanascimento;}
+    public String getEmail() {
+        return email;
+    }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public LocalDate getDatanascimento() {
+        return datanascimento;
+    }
+
+    public void setDatanascimento(LocalDate datanascimento) {
+        this.datanascimento = datanascimento;
+    }
 }
