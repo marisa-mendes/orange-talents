@@ -1,8 +1,5 @@
 package orange.talents.gerenciador.entities;
 
-
-import lombok.Data;
-
 import javax.persistence.*;
 
 import java.io.Serializable;
@@ -15,6 +12,8 @@ import java.util.List;
 public class Usuarios implements Serializable {
 
     private static final long serialVersionUID = 9125277018717732648L;
+
+    private Long id;
 
     private String cpf;
 
@@ -30,6 +29,10 @@ public class Usuarios implements Serializable {
     public Usuarios(){
 
     }
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Long getId() {
+        return id; }
 
     @Column(name = "cpf", nullable = false, unique = true)
     public  String getCpf(){return cpf;}
