@@ -1,7 +1,5 @@
 package orange.talents.gerenciador.entities;
 
-
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -9,7 +7,7 @@ import java.util.Objects;
 public class Veiculos  {
 
 
-    private Long id;
+    private Integer codigo;
     private String marcas;
     private String modelos;
     private Integer anos;
@@ -27,20 +25,20 @@ public class Veiculos  {
         if (this == o) return true;
         if (!(o instanceof Veiculos)) return false;
         Veiculos veiculos1 = (Veiculos) o;
-        return id.equals(veiculos1.id) && marcas.equals(veiculos1.marcas) && modelos.equals(veiculos1.modelos) && anos.equals(veiculos1.anos) && usuarios.equals(veiculos1.usuarios) && veiculos.equals(veiculos1.veiculos);
+        return codigo.equals(veiculos1.codigo) && marcas.equals(veiculos1.marcas) && modelos.equals(veiculos1.modelos) && anos.equals(veiculos1.anos) && usuarios.equals(veiculos1.usuarios) && veiculos.equals(veiculos1.veiculos);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, marcas, modelos, anos, usuarios, veiculos);
+        return Objects.hash(codigo, marcas, modelos, anos, usuarios, veiculos);
     }
 
-    public Long getId() {
-        return id;
+    public Integer getId() {
+        return codigo;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Integer id) {
+        this.codigo = id;
     }
 
     public String getMarcas() {
